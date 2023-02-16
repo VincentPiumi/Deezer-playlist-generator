@@ -7,5 +7,10 @@
   </head>
 
   <body>
+    <form method="POST" action="{{ url_for('validate_input') }}">
+      <label for="user_input">Input:</label>
+      <input type="text" id="user_input" name="user_input">
+      <input type="submit" value="Validate">
+    </form>
   </body>
 </html>

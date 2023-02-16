@@ -156,9 +156,9 @@ class Application(customtkinter.CTk):
         img = ImageTk.PhotoImage(ico)
         self.wm_iconphoto(False, img)
 
-if __name__ == "__main__":    
-    customtkinter.set_appearance_mode("System")
-    customtkinter.set_default_color_theme("blue")
-    app = Application()
-    InputFrame(app)
-    app.mainloop()  
+# if __name__ == "__main__":    
+#    customtkinter.set_appearance_mode("System")
+#    customtkinter.set_default_color_theme("blue")
+#    app = Application()
+#    InputFrame(app)
+#    app.mainloop()  
