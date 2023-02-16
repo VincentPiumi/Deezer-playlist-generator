@@ -47,12 +47,10 @@ class SongFrame(customtkinter.CTkFrame):
         if len(url) != 0 :
             response = requests.get(url)
             response_content = response.content
-            img_data = Image.open(BytesIO(response_content))
-            resized = img_data.resize((50,50), Image.Resampling.LANCZOS)
-            img = ImageTk.PhotoImage(resized)
-            
-            self.song_label = customtkinter.CTkLabel(self, image=img)
-            self.song_label.image = img
+            img = customtkinter.CTkImage(light_image=Image.open(BytesIO(response_content)),
+                                              dark_image=Image.open(BytesIO(response_content)),
+                                              size=(50, 50))
+            self.song_label = customtkinter.CTkLabel(self, image=img, text="")
             self.song_label.grid(column=0, row=index + 1, sticky=tk.W, **self.options)
         else :
             self.has_error = True
@@ -154,7 +152,9 @@ class Application(customtkinter.CTk):
         self.geometry(f'{screen_width}x{screen_height}')
         self.resizable(True, True)
         self.columnconfigure(0, weight=1)
-        self.iconbitmap('./assets/deezer.ico')
+        ico = Image.open('./assets/deezer.ico')
+        img = ImageTk.PhotoImage(ico)
+        self.wm_iconphoto(False, img)
 
 if __name__ == "__main__":    
     customtkinter.set_appearance_mode("System")
